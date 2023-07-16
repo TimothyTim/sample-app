@@ -1,10 +1,11 @@
 import "./App.css";
-import { ListKeys } from "./components/ListKeys";
+import { Counter } from "./components/Counter/Counter";
 
 function App() {
   return (
     <div className="App">
-      <ListKeys />
+      <h1>Sample app</h1>
+      <Counter />
     </div>
   );
 }

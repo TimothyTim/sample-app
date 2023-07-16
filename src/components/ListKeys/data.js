@@ -1,14 +1,16 @@
+import { v4 as uuidv4 } from "uuid";
+
 export const userData = [
   {
-    id: 1,
+    id: uuidv4(),
     name: "Bob",
   },
   {
-    id: 2,
+    id: uuidv4(),
     name: "Sue",
   },
   {
-    id: 3,
+    id: uuidv4(),
     name: "John",
   },
 ];

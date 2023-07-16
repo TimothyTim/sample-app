@@ -1,0 +1,7 @@
+// <ListItem key={0} name={"Bob"} />
+// <ListItem key={1} name={"John"} />
+// <ListItem key={2} name={"Sue"} />
+
+// <ListItem key={user.id1} name={"Bob"} />
+// <ListItem key={user.id2} name={"John"} />
+// <ListItem key={user.id3} name={"Sue"} />
