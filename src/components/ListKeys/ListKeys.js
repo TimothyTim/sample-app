@@ -3,7 +3,7 @@ import { userData } from "./data";
 
 const ListItem = ({ id, name }) => {
   console.log("render", id, name);
-  return <li key={id}>{name}</li>;
+  return <li>{name}</li>;
 };
 
 export const ListKeys = () => {
@@ -17,7 +17,11 @@ export const ListKeys = () => {
 
   return (
     <div>
-      <ul>{users.map(ListItem)}</ul>
+      <ul>
+        {users.map((user) => (
+          <ListItem key={user.id} {...user} />
+        ))}
+      </ul>
 
       <button onClick={handleRemoveLast}>
         Remove Last

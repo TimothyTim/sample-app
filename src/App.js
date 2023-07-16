@@ -1,10 +1,10 @@
 import "./App.css";
-import { CancelFetches } from "./components/CancelFetches/CancelFetches";
+import { ListKeys } from "./components/ListKeys";
 
 function App() {
   return (
     <div className="App">
-      <CancelFetches />
+      <ListKeys />
     </div>
   );
 }
