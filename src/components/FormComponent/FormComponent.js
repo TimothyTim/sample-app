@@ -18,7 +18,6 @@ export const FormComponent = () => {
         onChange={(e) => setName(e.target.value)}
         value={name}
       />
-
       <button onClick={() => setName("")}>
         reset value
       </button>
