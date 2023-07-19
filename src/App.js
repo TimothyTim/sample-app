@@ -1,11 +1,11 @@
 import "./App.css";
-import { Counter } from "./components/Counter/Counter";
+import { CancelFetches } from "./components/CancelFetches/CancelFetches";
 
 function App() {
   return (
     <div className="App">
       <h1>Sample app</h1>
-      <Counter />
+      <CancelFetches />
     </div>
   );
 }

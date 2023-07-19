@@ -1,37 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 
-const fakeFetch = (url) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve({ data: "some data" });
-    }, 2000);
-  });
-};
+export const CancelFetches = () => {
+  const [todo, setTodo] = useState({});
+  const [loading, setLoading] = useState(false);
+  // const controllerRef = useRef(null);
 
-export const CancelFetches = ({
-  url = "some.url?param=1",
-}) => {
-  const [state, setState] = React.useState({});
-  const [loading, setLoading] = React.useState(
-    false,
-  );
-
-  useEffect(() => {
+  const fetchTodoById = (todoId) => {
     setLoading(true);
 
-    const controller = new AbortController();
+    // if (controllerRef.current) controllerRef.current.abort();
+    // controllerRef.current = new AbortController();
 
-    fetch(url, { signal: controller.signal })
-      .then(setState)
+    fetch(`https://jsonplaceholder.typicode.com/todos/${todoId}`, {
+      // signal: controllerRef.current.signal,
+    })
+      .then((res) => res.json())
+      .then(setTodo)
       .catch(console.error)
-      .finally(() => setLoading(false));
-
-    return () => controller.abort();
-  }, [url]);
+      .finally(() => {
+        setLoading(false);
+        // controllerRef.current = null;
+      });
+  };
 
   return (
     <div>
-      {loading ? "Loading..." : state.data}
+      <button onClick={() => fetchTodoById(1)}>fetch todo 1</button>
+      <button onClick={() => fetchTodoById(2)}>fetch todo 2</button>
+      <div>{loading ? "Loading..." : JSON.stringify(todo)}</div>
     </div>
   );
 };
