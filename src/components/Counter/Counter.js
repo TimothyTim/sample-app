@@ -1,5 +1,12 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
 export const Counter = () => {
-  return <div></div>;
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setCount(count + 1);
+    setCount(count + 1);
+  }, []);
+
+  return <div>{count}</div>;
 };
