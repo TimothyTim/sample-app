@@ -44,7 +44,7 @@ export const ListKeys = () => {
       <ul>
         {sortedUsers.map((user, index) => (
           <ListItem
-            key={user.id}
+            key={index}
             name={user.name}
           />
         ))}

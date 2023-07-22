@@ -8,7 +8,7 @@ export const FormComponent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log({ name });
+    console.log(name);
   };
 
   return (

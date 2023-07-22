@@ -1,33 +1,48 @@
-import React, { useState } from "react";
+import React, {
+  useEffect,
+  useState,
+} from "react";
 
 export const CancelFetches = () => {
+  const [selectedId, setSelectedId] = useState();
   const [todo, setTodo] = useState({});
   const [loading, setLoading] = useState(false);
-  // const controllerRef = useRef(null);
 
-  const fetchTodoById = (todoId) => {
+  useEffect(() => {
+    if (!selectedId) return;
+
     setLoading(true);
+    const controller = new AbortController();
 
-    // if (controllerRef.current) controllerRef.current.abort();
-    // controllerRef.current = new AbortController();
-
-    fetch(`https://jsonplaceholder.typicode.com/todos/${todoId}`, {
-      // signal: controllerRef.current.signal,
-    })
+    fetch(
+      `https://jsonplaceholder.typicode.com/todos/${selectedId}`,
+      {
+        signal: controller.signal,
+      },
+    )
       .then((res) => res.json())
       .then(setTodo)
       .catch(console.error)
       .finally(() => {
         setLoading(false);
-        // controllerRef.current = null;
       });
-  };
+
+    return () => controller.abort();
+  }, [selectedId]);
 
   return (
     <div>
-      <button onClick={() => fetchTodoById(1)}>fetch todo 1</button>
-      <button onClick={() => fetchTodoById(2)}>fetch todo 2</button>
-      <div>{loading ? "Loading..." : JSON.stringify(todo)}</div>
+      <button onClick={() => setSelectedId(1)}>
+        fetch todo 1
+      </button>
+      <button onClick={() => setSelectedId(2)}>
+        fetch todo 2
+      </button>
+      <div>
+        {loading
+          ? "Loading..."
+          : JSON.stringify(todo)}
+      </div>
     </div>
   );
 };

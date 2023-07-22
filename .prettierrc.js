@@ -3,7 +3,7 @@
  */
 
 module.exports = {
-  printWidth: 120, // ESLint has better control but this breaks it
+  printWidth: 50, // ESLint has better control but this breaks it
   quoteProps: "consistent",
   code: 50,
   tabWidth: 2,

@@ -1,31 +1,32 @@
 import { useEffect, useState } from "react";
 
-let defaultValue = {
+const userDataDefault = {
+  id: 1,
   name: "jimmy",
   age: 30,
 };
 
 export const ReferenceEquality = () => {
-  const [patient, setPatient] = useState(
-    defaultValue,
+  const [user, setUser] = useState(
+    userDataDefault,
   );
+
+  const newValues = { age: 1 };
 
   // this will have an infinite loop
   useEffect(() => {
-    if (patient.name === "jimmy") {
-      setPatient((p) => ({
-        ...p,
-        age: p.age + 1,
-      }));
-    }
-  }, [patient.name]);
+    setUser((prevUserState) => ({
+      ...prevUserState,
+      age: prevUserState.age + newValues.age,
+    }));
+  }, []);
 
   return (
     <dl className="App">
       <dt>Name:</dt>
-      <dd>{patient.name}</dd>
+      <dd>{user.name}</dd>
       <dt>Age:</dt>
-      <dd>{patient.age}</dd>
+      <dd>{user.age}</dd>
     </dl>
   );
 };
